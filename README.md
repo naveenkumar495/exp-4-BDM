@@ -1,7 +1,8 @@
 # Exp 4 Elbow Method using K-Means Clustering
 
-**Date:**
-
+**Date:** 08/08/2026
+## Name : Naveenkumar M 
+## Reg No: 212224230183
 ## AIM:
 To implement the Elbow Method using K-Means Clustering in Python to determine the optimal number of clusters for customers based on their Annual Income and Spending Score by plotting WCSS against different values of K.
 
@@ -32,12 +33,45 @@ Plot the WCSS values against the corresponding values of **K** to identify the o
 Execute the program and analyze the elbow point in the graph.
 
 ## PROGRAM:
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 
-*(Paste the Python code for the Elbow Method here.)*
+data = pd.read_csv("customers_large_dataset.csv")
+
+X = data[["AnnualIncome", "SpendingScore"]]
+
+wcss = [] 
+
+for k in range(1, 11):   
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_)   
+
+    plt.figure()
+plt.plot(range(1, 11), wcss)
+plt.xlabel("Number of Clusters (K)")
+plt.ylabel("WCSS")
+plt.title("Elbow Method")
+plt.show()
+```
 
 ## OUTPUT:
+```
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+<Figure size 640x480 with 0 Axes>
+```
 
-*(Paste the execution output showing the Elbow Method graph with WCSS vs Number of Clusters.)*
+<img width="928" height="586" alt="image" src="https://github.com/user-attachments/assets/5ffbf7d6-88f7-49ec-be87-13380dcee3e1" />
+
 
 ## RESULT:
 
